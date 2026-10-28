@@ -1,0 +1,67 @@
+{
+  "name": "asset-management",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@cap-js/hana": "^3",
+    "@sap/cds": "^10",
+    "@sap/xssec": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^3",
+    "@sap/cds-dk": "^10",
+    "cds-plugin-ui5": "^0.17.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-assignments": "cds watch --open asset.mgmt.assignments/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-myrequests": "cds watch --open asset.mgmt.myrequests/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-products": "cds watch --open asset.mgmt.products/index.html?sap-ui-xx-viewCache=false --livereload false"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "uladzislau.liavonchyk@sap.com": {
+              "roles": [
+                "Admin",
+                "Viewer"
+              ]
+            },
+            "alice": {
+              "password": "",
+              "roles": [
+                "Viewer"
+              ]
+            },
+            "admin": {
+              "password": "",
+              "roles": [
+                "Admin",
+                "Viewer"
+              ]
+            }
+          }
+        }
+      },
+      "[production]": {
+        "auth": "xsuaa",
+        "db": "hana"
+      },
+      "destinations": true,
+      "html5-repo": true,
+      "workzone": true
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/assignments",
+    "app/myrequests",
+    "app/products"
+  ]
+}

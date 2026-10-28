@@ -1,0 +1,32 @@
+{
+  "generationParameters": {
+    "generationDate": "Wed Oct 28 2026 13:49:15 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "Local CAP",
+    "metadataFilename": "",
+    "serviceUrl": "http://localhost:4004/odata/v4/asset/",
+    "appName": "products",
+    "appTitle": "Manage Products",
+    "appDescription": "Manage product catalog and stock",
+    "appNamespace": "asset.mgmt",
+    "ui5Theme": "sap_horizon_dark",
+    "ui5Version": "1.153.0",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": false,
+    "generatorVersion": "1.34.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "Products"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "None"
+      }
+    ],
+    "launchText": "To launch the generated app, start your CAP project:  and navigate to the following location in your browser:\n\nhttp://localhost:4004/asset.mgmt.products/index.html"
+  }
+}

@@ -1,0 +1,6 @@
+ID,name,category_code,description,totalQuantity,availableQuantity
+11111111-1111-4111-8111-000000000001,MacBook Pro 14,Laptop,Developer laptop M3 16GB,5,3
+11111111-1111-4111-8111-000000000002,Dell Latitude 7440,Laptop,Business laptop,4,3
+11111111-1111-4111-8111-000000000003,Microsoft 365 E3,License,Office suite license,10,9
+11111111-1111-4111-8111-000000000004,IntelliJ IDEA Ultimate,License,Java IDE license,3,3
+11111111-1111-4111-8111-000000000005,Logitech MX Keys,Accessory,Wireless keyboard,6,6

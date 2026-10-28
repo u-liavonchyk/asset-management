@@ -1,0 +1,7 @@
+ID,firstName,lastName,email,department
+22222222-2222-4222-8222-000000000001,Anna,Ivanova,anna.ivanova@example.com,IT
+22222222-2222-4222-8222-000000000002,Pavel,Smirnov,pavel.smirnov@example.com,Finance
+22222222-2222-4222-8222-000000000003,Olga,Petrova,olga.petrova@example.com,HR
+22222222-2222-4222-8222-000000000004,Dmitry,Kozlov,dmitry.kozlov@example.com,Sales
+22222222-2222-4222-8222-000000000005,Uladzislau,Liavonchyk,uladzislau.liavonchyk@sap.com,IT
+22222222-2222-4222-8222-000000000006,Yauheni,Sapryn,yauheni.sapryn@leverx.com,Training
