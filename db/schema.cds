@@ -2,15 +2,21 @@ namespace asset.mgmt;
 
 using { cuid, managed, sap.common.CodeList } from '@sap/cds/common';
 
+type AssignmentStatus : String(20) enum { Requested; Assigned; Rejected; Cancelled; ReturnRequested; Returned; }
+
 entity Categories : CodeList {
   key code : String(20);
 }
-type AssignmentStatus : String(20) enum { Requested; Assigned; Rejected; Returned; }
+
+entity Statuses : CodeList {
+  key code : AssignmentStatus;
+}
 
 entity Products : cuid, managed {
   name              : String(100) @mandatory;
   category          : Association to Categories @assert.target;
   description       : String(500);
+  imageUrl          : String(500);
   totalQuantity     : Integer default 0;
   availableQuantity : Integer default 0;
   assignments       : Association to many Assignments on assignments.product = $self;
@@ -32,6 +38,6 @@ entity Assignments : cuid, managed {
   assignedAt     : Date;
   dueDate        : Date;
   returnedAt     : Date;
-  comment        : String(500);
-  managerComment : String(500);
+  comment        : String(500);   // request reason / note
+  managerComment : String(500);   // manager decision, e.g. rejection reason
 }

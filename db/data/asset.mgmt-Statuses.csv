@@ -1,0 +1,7 @@
+code;name;descr
+Requested;Requested;Waiting for manager approval
+Assigned;Assigned;Product is assigned to the employee
+Rejected;Rejected;Request was rejected by the manager
+Cancelled;Cancelled;Request was cancelled by the employee
+ReturnRequested;Return Requested;Employee requested to return the product
+Returned;Returned;Product was returned to stock

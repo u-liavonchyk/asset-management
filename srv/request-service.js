@@ -63,6 +63,11 @@ export default class RequestService extends cds.ApplicationService {
       return this.run(SELECT.one.from(req.subject));
     });
 
+    const CRITICALITY = { Requested: 2, ReturnRequested: 2, Assigned: 3, Rejected: 1, Cancelled: 0, Returned: 0 };
+    this.after('READ', MyRequests, rows => {
+      for (const r of [].concat(rows ?? [])) if (r?.status) r.statusCriticality = CRITICALITY[r.status] ?? 0;
+    });
+
     return super.init();
   }
 }

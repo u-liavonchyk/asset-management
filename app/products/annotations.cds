@@ -5,12 +5,14 @@ annotate service.Products with @(
     TypeName       : 'Product',
     TypeNamePlural : 'Products',
     Title          : { Value: name },
-    Description    : { Value: category.name }
+    Description    : { Value: category.name },
+    ImageUrl       : imageUrl
   },
 
   UI.SelectionFields : [ name, category_code ],
 
   UI.LineItem        : [
+    { Value: imageUrl,          Label: ' ' },
     { Value: name,              Label: 'Product' },
     { Value: category_code,     Label: 'Category' },
     { Value: totalQuantity,     Label: 'Total' },
@@ -22,7 +24,8 @@ annotate service.Products with @(
     Data : [
       { Value: name,          Label: 'Product' },
       { Value: category_code, Label: 'Category' },
-      { Value: description,   Label: 'Description' }
+      { Value: description,   Label: 'Description' },
+      { Value: imageUrl,      Label: 'Image' }
     ]
   },
 
@@ -56,6 +59,7 @@ annotate service.Products with {
     }
   });
   description       @Common.Label: 'Description'    @UI.MultiLineText;
+  imageUrl          @Common.Label: 'Image'          @UI.IsImageURL;
   totalQuantity     @Common.Label: 'Total Quantity';
   availableQuantity @Common.Label: 'Available';
 };
@@ -68,7 +72,7 @@ annotate service.Categories with {
 annotate service.Assignments with @(
   UI.LineItem #ProductAssignments : [
     { Value: employee_ID, Label: 'Employee' },
-    { Value: status,      Label: 'Status' },
+    { Value: status,      Label: 'Status', Criticality: statusCriticality, CriticalityRepresentation: #WithIcon },
     { Value: assignedAt,  Label: 'Assigned On' },
     { Value: dueDate,     Label: 'Due Date' },
     { Value: returnedAt,  Label: 'Returned On' }

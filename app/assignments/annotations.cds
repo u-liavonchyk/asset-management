@@ -13,7 +13,7 @@ annotate service.Assignments with @(
   UI.LineItem        : [
     { Value: product_ID,  Label: 'Product' },
     { Value: employee_ID, Label: 'Employee' },
-    { Value: status,      Label: 'Status' },
+    { Value: status,      Label: 'Status', Criticality: statusCriticality, CriticalityRepresentation: #WithIcon },
     { Value: assignedAt,  Label: 'Assigned On' },
     { Value: dueDate,     Label: 'Due Date' },
     { Value: returnedAt,  Label: 'Returned On' },
@@ -32,7 +32,7 @@ annotate service.Assignments with @(
     Data : [
       { Value: product_ID,     Label: 'Product' },
       { Value: employee_ID,    Label: 'Employee' },
-      { Value: status,         Label: 'Status' },
+      { Value: status,         Label: 'Status', Criticality: statusCriticality, CriticalityRepresentation: #WithIcon },
       { Value: assignedAt,     Label: 'Assigned On' },
       { Value: dueDate,        Label: 'Due Date' },
       { Value: returnedAt,     Label: 'Returned On' },
@@ -77,12 +77,27 @@ annotate service.Assignments with {
       ]
     }
   });
-  status         @Common.Label: 'Status'          @readonly;
+  status         @(Common: {
+    Label                    : 'Status',
+    ValueListWithFixedValues : true,
+    ValueList                : {
+      CollectionPath : 'Statuses',
+      Parameters     : [
+        { $Type: 'Common.ValueListParameterInOut',       LocalDataProperty: status, ValueListProperty: 'code' },
+        { $Type: 'Common.ValueListParameterDisplayOnly', ValueListProperty: 'name' }
+      ]
+    }
+  }) @readonly;
   returnedAt     @Common.Label: 'Returned On'     @readonly;
   assignedAt     @Common.Label: 'Assigned On';
   dueDate        @Common.Label: 'Due Date';
   comment        @Common.Label: 'Comment'         @UI.MultiLineText;
   managerComment @Common.Label: 'Manager Comment' @readonly @UI.MultiLineText;
+};
+
+annotate service.Statuses with {
+  code @Common.Label: 'Status' @Common.Text: name @Common.TextArrangement: #TextOnly;
+  name @Common.Label: 'Status';
 };
 
 annotate service.Assignments with actions {

@@ -5,18 +5,20 @@ annotate service.MyRequests with @(
     TypeName       : 'Request',
     TypeNamePlural : 'My Requests',
     Title          : { Value: product.name },
-    Description    : { Value: status }
+    Description    : { Value: status },
+    ImageUrl       : product.imageUrl
   },
 
   UI.SelectionFields : [ product_ID, status ],
 
   UI.LineItem        : [
-    { Value: product_ID,     Label: 'Product' },
-    { Value: status,         Label: 'Status' },
-    { Value: dueDate,        Label: 'Needed Until' },
-    { Value: assignedAt,     Label: 'Assigned On' },
-    { Value: returnedAt,     Label: 'Returned On' },
-    { Value: managerComment, Label: 'Manager Comment' },
+    { Value: product.imageUrl, Label: ' ' },
+    { Value: product_ID,       Label: 'Product' },
+    { Value: status,           Label: 'Status', Criticality: statusCriticality, CriticalityRepresentation: #WithIcon },
+    { Value: dueDate,          Label: 'Needed Until' },
+    { Value: assignedAt,       Label: 'Assigned On' },
+    { Value: returnedAt,       Label: 'Returned On' },
+    { Value: managerComment,   Label: 'Manager Comment' },
     { $Type: 'UI.DataFieldForAction', Action: 'RequestService.cancelRequest', Label: 'Cancel Request' },
     { $Type: 'UI.DataFieldForAction', Action: 'RequestService.requestReturn', Label: 'Request Return' }
   ],
@@ -36,7 +38,7 @@ annotate service.MyRequests with @(
 
   UI.FieldGroup #Decision : {
     Data : [
-      { Value: status,         Label: 'Status' },
+      { Value: status,         Label: 'Status', Criticality: statusCriticality, CriticalityRepresentation: #WithIcon },
       { Value: assignedAt,     Label: 'Assigned On' },
       { Value: returnedAt,     Label: 'Returned On' },
       { Value: managerComment, Label: 'Manager Comment' }
@@ -68,7 +70,17 @@ annotate service.MyRequests with {
     }
   });
   employee       @UI.Hidden @readonly;
-  status         @Common.Label: 'Status'          @readonly;
+  status         @(Common: {
+    Label                    : 'Status',
+    ValueListWithFixedValues : true,
+    ValueList                : {
+      CollectionPath : 'Statuses',
+      Parameters     : [
+        { $Type: 'Common.ValueListParameterInOut',       LocalDataProperty: status, ValueListProperty: 'code' },
+        { $Type: 'Common.ValueListParameterDisplayOnly', ValueListProperty: 'name' }
+      ]
+    }
+  }) @readonly;
   assignedAt     @Common.Label: 'Assigned On'     @readonly;
   returnedAt     @Common.Label: 'Returned On'     @readonly;
   managerComment @Common.Label: 'Manager Comment' @readonly @UI.MultiLineText;
@@ -91,9 +103,15 @@ annotate service.Products with {
   ID       @UI.Hidden;
   name     @Common.Label: 'Product';
   category @Common.Label: 'Category' @Common.Text: category.name @Common.TextArrangement: #TextOnly;
+  imageUrl @Common.Label: 'Image'    @UI.IsImageURL;
 };
 
 annotate service.Categories with {
   code @Common.Label: 'Code' @Common.Text: name @Common.TextArrangement: #TextOnly;
   name @Common.Label: 'Category';
+};
+
+annotate service.Statuses with {
+  code @Common.Label: 'Status' @Common.Text: name @Common.TextArrangement: #TextOnly;
+  name @Common.Label: 'Status';
 };
