@@ -32,9 +32,12 @@
 		},
 		"crossNavigation": {
 			"inbounds": {
-				"products-display": {
-					"semanticObject": "products",
+				"myrequests-display": {
+					"semanticObject": "ProductRequest",
 					"action": "display",
+					"title": "{{appTitle}}",
+					"subTitle": "{{appDescription}}",
+					"icon": "sap-icon://request",
 					"signature": {
 						"parameters": {},
 						"additionalParameters": "allowed"

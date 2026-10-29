@@ -71,8 +71,8 @@ modules:
             Authentication: NoAuthentication
             Type: HTTP
             ProxyType: Internet
-            ForwardAuthToken: true
-            DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            HTML5.DynamicDestination: true
 
   - name: assetmanagementassignments
     type: html5
@@ -173,6 +173,20 @@ resources:
     parameters:
       service: destination
       service-plan: lite
+      config:
+        HTML5Runtime_enabled: true
+        version: 1.0.0
+        init_data:
+          instance:
+            existing_destinations_policy: update
+            destinations:
+              - Name: srv-api
+                URL: ~{srv-api/srv-url}
+                Authentication: NoAuthentication
+                Type: HTTP
+                ProxyType: Internet
+                HTML5.ForwardAuthToken: true
+                HTML5.DynamicDestination: true
     requires:
       - name: srv-api
 

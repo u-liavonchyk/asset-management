@@ -32,9 +32,12 @@
 		},
 		"crossNavigation": {
 			"inbounds": {
-				"products-display": {
-					"semanticObject": "products",
-					"action": "display",
+				"assignments-manage": {
+					"semanticObject": "ProductAssignment",
+					"action": "manage",
+					"title": "{{appTitle}}",
+					"subTitle": "{{appDescription}}",
+					"icon": "sap-icon://approvals",
 					"signature": {
 						"parameters": {},
 						"additionalParameters": "allowed"
