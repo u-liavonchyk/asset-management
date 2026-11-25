@@ -18,7 +18,7 @@
     "watch-assignments": "cds watch --open asset.mgmt.assignments/index.html?sap-ui-xx-viewCache=false --livereload false",
     "watch-myrequests": "cds watch --open asset.mgmt.myrequests/index.html?sap-ui-xx-viewCache=false --livereload false",
     "watch-products": "cds watch --open asset.mgmt.products/index.html?sap-ui-xx-viewCache=false --livereload false",
-    "test": "node --test \"test/**/*.test.js\""
+    "test": "CDS_PLUGIN_UI5_ACTIVE=false node --test --test-force-exit \"test/**/*.test.js\"",
   },
   "private": true,
   "cds": {
