@@ -7,6 +7,10 @@
     {
       "name": "$XSAPPNAME.Admin",
       "description": "Admin"
+    },
+    {
+      "name": "$XSAPPNAME.Analytics",
+      "description": "Read-only access to AnalyticsService (reporting via API Management)"
     }
   ],
   "attributes": [],
@@ -26,6 +30,17 @@
         "$XSAPPNAME.Admin"
       ],
       "attribute-references": []
+    },
+    {
+      "name": "Analytics",
+      "description": "Reporting access to AnalyticsService",
+      "scope-references": [
+        "$XSAPPNAME.Analytics"
+      ],
+      "attribute-references": []
     }
+  ],
+  "authorities": [
+    "$XSAPPNAME.Analytics"
   ]
 }

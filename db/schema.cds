@@ -40,4 +40,5 @@ entity Assignments : cuid, managed {
   returnedAt     : Date;
   comment        : String(500);   // request reason / note
   managerComment : String(500);   // manager decision, e.g. rejection reason
+  requestDate    : Date;
 }

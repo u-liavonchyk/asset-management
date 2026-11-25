@@ -1,0 +1,79 @@
+
+> asset-management@1.0.0 test
+> node --test "test/**/*.test.js"
+
+[32minfo[39m fiori-tools-proxy Using UI5 version 1.153.0 based on manifest.json
+[32minfo[39m fiori-tools-proxy Starting fiori-tools-proxy using following configuration:
+[32minfo[39m fiori-tools-proxy proxy: 'http://127.0.0.1:8887'
+[32minfo[39m fiori-tools-proxy ignoreCertErrors: 'false'
+[32minfo[39m fiori-tools-proxy backend: undefined
+[32minfo[39m fiori-tools-proxy ui5: [{"path":"/resources","url":"https://sapui5.hana.ondemand.com","version":"1.153.0"},{"path":"/test-resources","url":"https://sapui5.hana.ondemand.com","version":"1.153.0"}]
+[32minfo[39m fiori-tools-proxy debug: 'false'
+[32minfo[39m fiori-tools-appreload Livereload middleware started for port 35732 and path /home/user/projects/asset-management/app/assignments/webapp
+[32minfo[39m fiori-tools-preview Initialized for app asset.mgmt.assignments
+[32minfo[39m fiori-tools-proxy Using UI5 version 1.153.0 based on manifest.json
+[32minfo[39m fiori-tools-proxy Starting fiori-tools-proxy using following configuration:
+[32minfo[39m fiori-tools-proxy proxy: 'http://127.0.0.1:8887'
+[32minfo[39m fiori-tools-proxy ignoreCertErrors: 'false'
+[32minfo[39m fiori-tools-proxy backend: undefined
+[32minfo[39m fiori-tools-proxy ui5: [{"path":"/resources","url":"https://sapui5.hana.ondemand.com","version":"1.153.0"},{"path":"/test-resources","url":"https://sapui5.hana.ondemand.com","version":"1.153.0"}]
+[32minfo[39m fiori-tools-proxy debug: 'false'
+[32minfo[39m fiori-tools-appreload Livereload middleware started for port 35733 and path /home/user/projects/asset-management/app/myrequests/webapp
+[32minfo[39m fiori-tools-preview Initialized for app asset.mgmt.myrequests
+[32minfo[39m fiori-tools-proxy Using UI5 version 1.153.0 based on manifest.json
+[32minfo[39m fiori-tools-proxy Starting fiori-tools-proxy using following configuration:
+[32minfo[39m fiori-tools-proxy proxy: 'http://127.0.0.1:8887'
+[32minfo[39m fiori-tools-proxy ignoreCertErrors: 'false'
+[32minfo[39m fiori-tools-proxy backend: undefined
+[32minfo[39m fiori-tools-proxy ui5: [{"path":"/resources","url":"https://sapui5.hana.ondemand.com","version":"1.153.0"},{"path":"/test-resources","url":"https://sapui5.hana.ondemand.com","version":"1.153.0"}]
+[32minfo[39m fiori-tools-proxy debug: 'false'
+[32minfo[39m fiori-tools-appreload Livereload middleware started for port 35734 and path /home/user/projects/asset-management/app/products/webapp
+[32minfo[39m fiori-tools-preview Initialized for app asset.mgmt.products
+▶ Authorization
+  ✔ admin can read the product catalog (37.606209ms)
+  ✔ viewer is rejected from the admin service (7.126103ms)
+  ✖ employee sees only own requests (0.289592ms)
+✖ Authorization (3148.074741ms)
+▶ Request approval flow
+  ✔ reject requires a reason (14.705109ms)
+  ✔ approve assigns the product and reduces the stock (11.774637ms)
+  ✔ an already processed request cannot be approved again (13.777862ms)
+  ✔ return cannot be confirmed before the employee requests it (4.00475ms)
+✔ Request approval flow (44.730202ms)
+▶ Analytics service (reporting via API Management)
+  ✔ technical user can read flat assignment facts (4.04243ms)
+  ✔ products expose the assigned quantity (3.561426ms)
+  ✔ is read-only (3.87701ms)
+  ✔ business users cannot access it (3.653827ms)
+✔ Analytics service (reporting via API Management) (15.501605ms)
+
+Interrupted while running:
+
+⚠ test/asset-management.test.js (test/asset-management.test.js:1:1)
+✖ test/asset-management.test.js (152858.760529ms)
+ℹ tests 12
+ℹ suites 3
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 1
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 152863.805097
+
+✖ failing tests:
+
+test at test/asset-management.test.js:35:3
+✖ employee sees only own requests (0.289592ms)
+  ReferenceError [Error]: employee is not defined
+      at TestContext.<anonymous> (file:///home/user/projects/asset-management/test/asset-management.test.js:36:95)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/asset-management.test.js:1:1
+✖ test/asset-management.test.js (152858.760529ms)
+  'Promise resolution is still pending but the event loop has already resolved'

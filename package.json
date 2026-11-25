@@ -45,6 +45,12 @@
                 "Admin",
                 "Viewer"
               ]
+            },
+            "reporting": {
+              "password": "",
+              "roles": [
+                "Analytics"
+              ]
             }
           }
         }

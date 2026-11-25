@@ -55,7 +55,7 @@ export default class AssetService extends cds.ApplicationService {
       if (!d.employee_ID) return req.error(400, 'Select an employee', 'employee_ID');
 
       Object.assign(d, { status: 'Assigned', returnedAt: null, managerComment: null });
-      d.assignedAt ??= today();
+        d.requestDate = d.assignedAt;
       if (d.dueDate && d.dueDate < d.assignedAt)
         return req.error(400, 'Due date cannot be before the assignment date', 'dueDate');
 

@@ -1,6 +1,13 @@
 ID,name,category_code,description,imageUrl,totalQuantity,availableQuantity
-11111111-1111-4111-8111-000000000001,MacBook Pro 14,Laptop,Developer laptop M3 16GB,sap-icon://laptop,5,3
-11111111-1111-4111-8111-000000000002,Dell Latitude 7440,Laptop,Business laptop,sap-icon://laptop,4,3
-11111111-1111-4111-8111-000000000003,Microsoft 365 E3,License,Office suite license,sap-icon://document-text,10,9
-11111111-1111-4111-8111-000000000004,IntelliJ IDEA Ultimate,License,Java IDE license,sap-icon://source-code,3,3
+11111111-1111-4111-8111-000000000001,MacBook Pro 14,Laptop,Developer laptop M3 16GB,sap-icon://laptop,10,3
+11111111-1111-4111-8111-000000000002,Dell Latitude 7440,Laptop,Business laptop,sap-icon://laptop,9,2
+11111111-1111-4111-8111-000000000003,Microsoft 365 E3,License,Office suite license,sap-icon://document-text,8,3
+11111111-1111-4111-8111-000000000004,IntelliJ IDEA Ultimate,License,Java IDE license,sap-icon://source-code,9,2
 11111111-1111-4111-8111-000000000005,Logitech MX Keys,Accessory,Wireless keyboard,sap-icon://keyboard-and-mouse,6,6
+11111111-1111-4111-8111-000000000006,Lenovo ThinkPad X1 Carbon,Laptop,Ultralight business laptop,sap-icon://laptop,7,3
+11111111-1111-4111-8111-000000000007,Dell UltraSharp U2723QE,Device,"27"" 4K monitor",sap-icon://sys-monitor,10,4
+11111111-1111-4111-8111-000000000008,iPhone 15,Device,Corporate smartphone,sap-icon://iphone,4,3
+11111111-1111-4111-8111-000000000009,Adobe Creative Cloud,License,Design software subscription,sap-icon://palette,4,1
+11111111-1111-4111-8111-000000000010,Slack Pro,License,Team messaging license,sap-icon://discussion,2,1
+11111111-1111-4111-8111-000000000011,Jabra Evolve2 65,Accessory,Wireless headset,sap-icon://headset,6,4
+11111111-1111-4111-8111-000000000012,Logitech MX Master 3S,Accessory,Wireless mouse,sap-icon://keyboard-and-mouse,6,3

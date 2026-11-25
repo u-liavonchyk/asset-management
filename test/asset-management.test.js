@@ -4,12 +4,13 @@ import assert from 'node:assert/strict';
 
 const { GET, POST } = cds.test(import.meta.dirname + '/..');
 
-const admin    = { auth: { username: 'admin', password: '' } };
-const viewer   = { auth: { username: 'alice', password: '' } };
+const admin = { auth: { username: 'admin', password: '' } };
+const viewer = { auth: { username: 'alice', password: '' } };
 const employee = { auth: { username: 'uladzislau.liavonchyk@sap.com', password: '' } };
+const reporting = { auth: { username: 'reporting', password: '' } }; // technical user of API Management
 
-const REQUEST_ID  = '33333333-3333-4333-8333-000000000006'; // Logitech MX Keys, status Requested
-const PRODUCT_ID  = '11111111-1111-4111-8111-000000000005'; // Logitech MX Keys, 6 available
+const REQUEST_ID = '33333333-3333-4333-8333-000000000006'; // Logitech MX Keys, status Requested
+const PRODUCT_ID = '11111111-1111-4111-8111-000000000005'; // Logitech MX Keys, 6 available
 const EMPLOYEE_ID = '22222222-2222-4222-8222-000000000005'; // Uladzislau Liavonchyk
 
 const action = name =>
@@ -25,7 +26,7 @@ describe('Authorization', () => {
   it('admin can read the product catalog', async () => {
     const { status, data } = await GET('/odata/v4/asset/Products?$filter=IsActiveEntity eq true', admin);
     assert.equal(status, 200);
-    assert.equal(data.value.length, 5);
+    assert.equal(data.value.length, 12);
   });
 
   it('viewer is rejected from the admin service', async () => {
@@ -59,5 +60,31 @@ describe('Request approval flow', () => {
 
   it('return cannot be confirmed before the employee requests it', async () => {
     assert.equal(await statusOf(POST(action('confirmReturn'), {}, admin)), 409);
+  });
+});
+
+describe('Analytics service (reporting via API Management)', () => {
+  it('technical user can read flat assignment facts', async () => {
+    const { status, data } = await GET('/odata/v4/analytics/Assignments', reporting);
+    assert.equal(status, 200);
+    assert.ok(data.value.length > 50);
+    const row = data.value[0];
+    for (const f of ['ID', 'product_ID', 'employee_ID', 'status', 'requestDate', 'requestCount'])
+      assert.ok(f in row, `missing ${f}`);
+    assert.equal(row.requestCount, 1);
+  });
+
+  it('products expose the assigned quantity', async () => {
+    const { data } = await GET('/odata/v4/analytics/Products', reporting);
+    assert.ok(data.value.every(p => p.assignedQuantity === p.totalQuantity - p.availableQuantity));
+  });
+
+  it('is read-only', async () => {
+    assert.equal(await statusOf(POST('/odata/v4/analytics/Categories', { code: 'X', name: 'X' }, reporting)), 405);
+  });
+
+  it('business users cannot access it', async () => {
+    assert.equal(await statusOf(GET('/odata/v4/analytics/Assignments', admin)), 403);
+    assert.equal(await statusOf(GET('/odata/v4/analytics/Assignments', viewer)), 403);
   });
 });

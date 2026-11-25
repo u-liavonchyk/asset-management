@@ -5,3 +5,11 @@ ID,firstName,lastName,email,department
 22222222-2222-4222-8222-000000000004,Dmitry,Kozlov,dmitry.kozlov@example.com,Sales
 22222222-2222-4222-8222-000000000005,Uladzislau,Liavonchyk,uladzislau.liavonchyk@sap.com,IT
 22222222-2222-4222-8222-000000000006,Yauheni,Sapryn,yauheni.sapryn@leverx.com,Training
+22222222-2222-4222-8222-000000000007,Maria,Volkova,maria.volkova@example.com,IT
+22222222-2222-4222-8222-000000000008,Sergey,Novikov,sergey.novikov@example.com,Sales
+22222222-2222-4222-8222-000000000009,Elena,Morozova,elena.morozova@example.com,Marketing
+22222222-2222-4222-8222-000000000010,Ivan,Fedorov,ivan.fedorov@example.com,Operations
+22222222-2222-4222-8222-000000000011,Natalia,Sokolova,natalia.sokolova@example.com,Finance
+22222222-2222-4222-8222-000000000012,Alexey,Popov,alexey.popov@example.com,Sales
+22222222-2222-4222-8222-000000000013,Irina,Lebedeva,irina.lebedeva@example.com,HR
+22222222-2222-4222-8222-000000000014,Andrei,Kuznetsov,andrei.kuznetsov@example.com,Marketing

@@ -15,7 +15,7 @@ export default class RequestService extends cds.ApplicationService {
     const load = req => SELECT.one.from(DbAssignments).where({ ID: keyOf(req) });
     const transition = (ID, from, data) => UPDATE(DbAssignments).set(data).where({ ID, status: from });
     // fields the employee is not allowed to set
-    const PROTECTED = ['employee_ID', 'status', 'assignedAt', 'returnedAt', 'managerComment'];
+      const PROTECTED = ['employee_ID', 'status', 'requestDate', 'assignedAt', 'returnedAt', 'managerComment'];
 
     this.before('CREATE', MyRequests, async req => {
       const d = req.data;
@@ -28,7 +28,7 @@ export default class RequestService extends cds.ApplicationService {
       if (d.dueDate && d.dueDate < today()) return req.error(400, 'Due date cannot be in the past', 'dueDate');
 
       for (const f of PROTECTED) delete d[f];
-      Object.assign(d, { employee_ID: me.ID, status: 'Requested' });
+        Object.assign(d, { employee_ID: me.ID, status: 'Requested', requestDate: today() });
     });
 
     this.before(['EDIT', 'UPDATE'], MyRequests, async req => {
